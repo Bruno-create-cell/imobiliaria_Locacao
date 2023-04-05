@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "imobiliariaLocacao", "imobiliariaLocacao\imobiliariaLocacao.csproj", "{ADD27B3C-DF80-4C07-B14C-9C2544D2B0E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{6B3AB0FD-88B0-4F0A-A7A4-6BA6799ECBDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADD27B3C-DF80-4C07-B14C-9C2544D2B0E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD27B3C-DF80-4C07-B14C-9C2544D2B0E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD27B3C-DF80-4C07-B14C-9C2544D2B0E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD27B3C-DF80-4C07-B14C-9C2544D2B0E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68314F7C-462F-412F-ABD6-F45920CE3DF7}
+	EndGlobalSection
+EndGlobal

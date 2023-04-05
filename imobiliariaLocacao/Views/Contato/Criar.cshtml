@@ -1,0 +1,115 @@
+﻿@model ContatoModel
+
+@{
+    ViewData["Title"] = "Cadastro de contato";
+}
+<div class="text-center ">
+
+
+
+    <h1>Cadastrar Contato</h1>
+
+
+</div>
+
+<form asp-controller="Contato" asp-action="Criar" method="post">
+    <div class="form-group">
+        <label for="Nome">Name</label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="Digite o nome do contato">
+        @Html.ValidationMessageFor(x=>x.Name)
+    </div>
+
+    <div class="form-group">
+        <label for="E-mail">E-mail</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="Digite o e-mail para contato">
+        @Html.ValidationMessageFor(x=>x.Email)
+    </div>
+
+    <div class="form-group">
+        <label for="Celular">Celular</label>
+        <input type="text" asp-for="Celular" class="form-control" placeholder="Digite o celular para contato">
+        @Html.ValidationMessageFor(x=>x.Celular)
+    </div>
+
+    <div class="form-group">
+        <label for="Endereco">Endereco</label>
+        <input type="text" id="logradouro" asp-for="Endereco" class="form-control autoCompleteCep" placeholder="Digite o endereço residencial">
+        @Html.ValidationMessageFor(x=>x.Endereco)
+    </div>
+
+    <div class="form-group">
+        <label for="Bairro">Bairro</label>
+        <input type="text" id="bairro" asp-for="Bairro" class="form-control autoCompleteCep" placeholder="Digite bairo ">
+        @Html.ValidationMessageFor(x=>x.Bairro)
+    </div>
+
+    <div class="form-group">
+        <label for="Cidade">Cidade</label>
+        <input type="text" id="localidade" asp-for="Cidade" class="form-control autoCompleteCep" placeholder="Digite a cidade ">
+        @Html.ValidationMessageFor(x=>x.Cidade)
+    </div>
+
+    <div class="form-group">
+        <label for="Estado">Estado</label>
+        <input type="text" id="uf" asp-for="Estado" class="form-control autoCompleteCep" placeholder="Digite o estado">
+        @Html.ValidationMessageFor(x=>x.Estado)
+    </div>
+
+    <div class="form-group">
+        <label for="Cep" >Cep</label>
+        <input type="text" id="cep" asp-for="Cep" class="form-control" placeholder="Digite o cep">
+        <span id="validate-Cep" style="color: red"></span>
+        @Html.ValidationMessageFor(x=>x.Cep)
+    </div>
+
+
+    <div class="form-group">
+        <label for="Celular">ValorAluguel</label>
+        <input type="text" asp-for="ValorAluguel" class="form-control" placeholder="Digite o valor do aluguel">
+        @Html.ValidationMessageFor(x=>x.ValorAluguel)
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a class="btn btn-secondary" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $("#cep").on("keyup", function () {
+        
+        var cep = $(this).val().replace(/[^0-9]/g, '');
+
+        if (cep !== "" && cep.length == 8) {
+
+            $.ajax({
+                url: "https://viacep.com.br/ws/" + cep + "/json/",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                   
+                    if (data.erro !== undefined) {
+                        $(".autoCompleteCep").val("");
+                        $("#validate-Cep").text("CEP inválido ou não encontrado");
+                    } else {
+                        $("#validate-Cep").text("");
+                        $("#logradouro").val(data.logradouro);
+                        $("#bairro").val(data.bairro);
+                        $("#localidade").val(data.localidade);
+                        $("#uf").val(data.uf);
+                       
+                    }
+                },
+                error: function (data) {
+                    $(".autoCompleteCep").val("");
+                    alert("Algum erro ocorreu, consulte o log.");
+                }
+            });
+
+        } else {
+            $(".autoCompleteCep").val("");
+            $("#Validate-Cep").text("CEP deve conter 8 digitos");
+        }
+    });
+</script>
